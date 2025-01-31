@@ -6,10 +6,10 @@
                                http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.goldin</groupId>
-    <artifactId>main.plugins</artifactId>
+    <groupId>com.github.dhsmith1001</groupId>
+    <artifactId>maven-plugins</artifactId>
     <packaging>pom</packaging>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.5.0-SNAPSHOT</version>
     <name>[${project.groupId}:${project.artifactId}:${project.version}]</name>
     <description>Maven plugins</description>
     <url>http://evgeny-goldin.com/wiki/Maven-plugins</url>
@@ -44,21 +44,22 @@
     </developers>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- ~~~~~~~~~~~~~~~~ -->
         <!-- Library versions -->
         <!-- ~~~~~~~~~~~~~~~~ -->
 
-        <java-version>1.6</java-version>
+        <java-version>1.7</java-version>
 
         <!-- http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.apache.maven%22%20AND%20a%3A%22maven-core%22 -->
-        <maven-version>3.0.5</maven-version>
+        <maven-version>3.1.1</maven-version>
 
         <!-- http://evgenyg.artifactoryonline.com/evgenyg/plugins-releases/com/github/goldin/about-maven-plugin/ -->
-        <previous-plugins-version>0.3-beta-1</previous-plugins-version>
+<!--         <previous-plugins-version>0.3-beta-1</previous-plugins-version> -->
 
         <!-- http://evgenyg.artifactoryonline.com/evgenyg/repo/com/github/goldin/gcommons/ -->
-        <gcommons-version>0.6.3-SNAPSHOT</gcommons-version>
+        <gcommons-version>0.6.3</gcommons-version>
 
         <!-- http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.codehaus.groovy%22%20AND%20a%3A%22groovy%22 -->
         <groovy-version>2.1.5</groovy-version>
@@ -73,13 +74,13 @@
         <spring-batch-version>2.2.0.RELEASE</spring-batch-version>
 
         <!-- http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22junit%22%20AND%20a%3A%22junit%22 -->
-        <junit-version>4.13.1</junit-version>
+        <junit-version>4.11</junit-version>
 
         <!-- http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.apache.ant%22%20AND%20a%3A%22ant%22 -->
-        <ant-version>1.10.11</ant-version>
+        <ant-version>1.9.1</ant-version>
 
         <!-- http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.sonatype.aether%22%20AND%20a%3A%22aether-api%22 -->
-        <aether-version>1.13.1</aether-version>
+        <aether-version>1.1.0</aether-version>
 
         <!-- http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.gcontracts%22%20AND%20a%3A%22gcontracts-core%22 -->
         <gcontracts-version>1.2.12</gcontracts-version>
@@ -96,6 +97,7 @@
         <!-- Infra -->
         <!-- ~~~~~ -->
 
+        <module>gcommons</module>
         <module>maven-common</module>
         <module>mojo-parent</module>
 
@@ -113,7 +115,7 @@
         <module>find-maven-plugin</module>
         <module>timestamp-maven-plugin</module>
         <module>properties-maven-plugin</module>
-        <module>silencer-maven-plugin</module>
+<!--         <module>silencer-maven-plugin</module> -->
         <module>sshexec-maven-plugin</module>
         <module>spring-batch-maven-plugin</module>
     </modules>
@@ -260,8 +262,9 @@
 
         <plugins>
 
+<!--
             <plugin>
-                <groupId>com.github.goldin</groupId>
+                <groupId>com.github.dhsmith1001</groupId>
                 <artifactId>silencer-maven-plugin</artifactId>
                 <version>${previous-plugins-version}</version>
                 <executions>
@@ -279,6 +282,7 @@
                     </execution>
                 </executions>
             </plugin>
+-->
 
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <!-- Enforcing Maven/Java versions                                                 -->
@@ -411,7 +415,7 @@
                     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                     <plugin>
-                        <groupId>com.github.goldin</groupId>
+                        <groupId>com.github.dhsmith1001</groupId>
                         <artifactId>copy-maven-plugin</artifactId>
                         <version>${previous-plugins-version}</version>
                         <executions>
@@ -444,7 +448,7 @@
                     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                     <plugin>
-                        <groupId>com.github.goldin</groupId>
+                        <groupId>com.github.dhsmith1001</groupId>
                         <artifactId>find-maven-plugin</artifactId>
                         <version>${previous-plugins-version}</version>
                         <executions>
@@ -463,7 +467,7 @@
                     </plugin>
 
                     <plugin>
-                        <groupId>com.github.goldin</groupId>
+                        <groupId>com.github.dhsmith1001</groupId>
                         <artifactId>about-maven-plugin</artifactId>
                         <version>${previous-plugins-version}</version>
                         <executions>
@@ -539,7 +543,7 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.github.goldin</groupId>
+                        <groupId>com.github.dhsmith1001</groupId>
                         <artifactId>duplicates-finder-plugin</artifactId>
                         <version>${previous-plugins-version}</version>
                         <executions>
@@ -559,4 +563,5 @@
             </build>
         </profile>
     </profiles>
+
 </project>

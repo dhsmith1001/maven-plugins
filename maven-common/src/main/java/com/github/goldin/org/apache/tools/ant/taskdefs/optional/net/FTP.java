@@ -25,6 +25,30 @@
  */
 package com.github.goldin.org.apache.tools.ant.taskdefs.optional.net;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPClientConfig;
 import org.apache.commons.net.ftp.FTPFile;
@@ -41,10 +65,6 @@ import org.apache.tools.ant.util.FileUtils;
 import org.apache.tools.ant.util.RetryHandler;
 import org.apache.tools.ant.util.Retryable;
 import org.apache.tools.ant.util.VectorSet;
-
-import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 /**
  * Basic FTP client. Performs the following actions:
@@ -2383,7 +2403,7 @@ public class FTP extends Task {
                     //  failed because the directory already exists.
                     int rc = ftp.getReplyCode();
                     if (!(ignoreNoncriticalErrors
-                          && (rc == FTPReply.CODE_550 || rc == FTPReply.CODE_553
+                          && (rc == FTPReply.FILE_UNAVAILABLE || rc == FTPReply.FILE_NAME_NOT_ALLOWED
                               || rc == CODE_521))) {
                         throw new BuildException("could not create directory: "
                                                  + ftp.getReplyString());
@@ -2414,7 +2434,7 @@ public class FTP extends Task {
         throws BuildException {
         int rc = ftp.getReplyCode();
         if (!(ignoreNoncriticalErrors
-              && (rc == FTPReply.CODE_550 || rc == FTPReply.CODE_553 || rc == CODE_521))) {
+              && (rc == FTPReply.FILE_UNAVAILABLE || rc == FTPReply.FILE_NAME_NOT_ALLOWED || rc == CODE_521))) {
             throw new BuildException("could not create directory: "
                                      + ftp.getReplyString());
         }
